@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Cathy Claire 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dp:#b5365a; --hot:#e05080; --mid:#f08098;
+  --soft:#fadadd; --blush:#fff0f3; --pale:#fff7f8;
+  --cream:#fffcf8; --gold:#d4a535; --gold2:#f5d76e;
+  --td:#3d1422; --tm:#7a2d46; --tl:#b06070;
+  --sh:0 4px 24px rgba(181,54,90,.13);
+  --sh2:0 10px 36px rgba(181,54,90,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--pale);color:var(--td);overflow-x:hidden;}
+
+/* ─── PETALS ─── */
+.petal-canvas{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.petal{position:absolute;top:-20px;opacity:0;animation:pfall linear infinite;}
+@keyframes pfall{0%{transform:translateY(-20px) rotate(0deg);opacity:.6;}100%{transform:translateY(110vh) rotate(420deg) translateX(50px);opacity:0;}}
+
+/* ─── CONFETTI ─── */
+.cf{position:fixed;top:-10px;pointer-events:none;z-index:999;animation:cffall 3s ease-in forwards;}
+@keyframes cffall{0%{opacity:1;transform:translateY(0) rotate(0);}85%{opacity:1;}100%{opacity:0;transform:translateY(100vh) rotate(580deg);}}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:500;
+  background:rgba(255,247,248,.95);backdrop-filter:blur(14px);
+  border-bottom:2px solid var(--soft);
+  display:flex;justify-content:center;align-items:center;gap:.4rem;
+  padding:.7rem 1rem;flex-wrap:wrap;
+}
+nav a{
+  font-weight:800;font-size:.85rem;color:var(--tm);
+  text-decoration:none;letter-spacing:.02em;
+  padding:.35rem .8rem;border-radius:30px;
+  display:flex;align-items:center;gap:.3rem;
+  transition:all .2s;
+}
+nav a:hover{background:var(--soft);color:var(--dp);}
+
+/* ─── BANNER ─── */
+#banner{
+  position:relative;width:100%;
+  height:clamp(220px,36vw,420px);
+  overflow:hidden;z-index:1;
+  margin-top:52px; /* nav height */
+}
+#banner img.banner-img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;
+}
+/* fallback gradient if image missing */
+#banner .banner-fallback{
+  position:absolute;inset:0;
+  background:linear-gradient(150deg,#ffc2d4 0%,#ffb3c6 35%,#ff8fab 70%,#fb6f92 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;letter-spacing:.5rem;
+}
+#banner .banner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(255,240,244,0) 30%, rgba(255,247,248,1) 100%);
+}
+#banner .banner-text{
+  position:absolute;bottom:0;left:0;right:0;
+  text-align:center;padding:1.5rem 1rem 2rem;
+}
+.banner-sup{
+  font-family:'Nunito',sans-serif;font-weight:800;
+  font-size:clamp(.8rem,1.8vw,.95rem);
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--hot);margin-bottom:.4rem;
+}
+.banner-name{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(3.2rem,9vw,7rem);
+  color:var(--dp);line-height:1;
+  text-shadow:0 3px 0 rgba(181,54,90,.12), 0 6px 20px rgba(181,54,90,.15);
+}
+.banner-tagline{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  color:var(--tm);margin-top:.6rem;line-height:1.6;
+}
+.banner-cats{
+  font-size:clamp(1.4rem,3vw,2rem);
+  letter-spacing:.4rem;margin-top:.5rem;
+  animation:catrow 3s ease-in-out infinite alternate;
+}
+@keyframes catrow{0%{transform:translateX(-4px);}100%{transform:translateX(4px);}}
+
+/* ─── SHARED ─── */
+section{position:relative;z-index:1;}
+.wrap{max-width:960px;margin:0 auto;padding:0 2rem;}
+.s-title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(2.4rem,6vw,3.8rem);
+  color:var(--dp);text-align:center;margin-bottom:.4rem;
+}
+.s-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  color:var(--tl);text-align:center;
+  font-size:clamp(.95rem,2vw,1.1rem);
+  margin-bottom:2rem;line-height:1.6;
+}
+.divider{display:flex;align-items:center;justify-content:center;gap:.7rem;margin:0 auto 2.2rem;color:var(--mid);}
+.divider::before,.divider::after{content:'';display:block;width:55px;height:1.5px;background:var(--soft);}
+.divider span{font-size:1.1rem;}
+.reveal{opacity:0;transform:translateY(24px);transition:all .65s ease;}
+.revealed{opacity:1;transform:translateY(0);}
+.sec-pad{padding:5rem 0;}
+
+/* critter strip */
+.critter-strip{
+  background:var(--soft);padding:1rem 1rem;
+  display:flex;justify-content:center;align-items:center;
+  gap:.5rem;font-size:1.5rem;letter-spacing:.05rem;
+  position:relative;z-index:1;overflow:hidden;
+  flex-wrap:wrap;
+}
+
+/* ─── HERO ─── */
+#hero{
+  padding:3rem 2rem 5rem;
+  background:linear-gradient(165deg,#fff7f8 0%,#ffe8ef 50%,#fcd5e0 100%);
+  text-align:center;overflow:hidden;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:white;border:2px solid var(--soft);
+  border-radius:30px;padding:.5rem 1.2rem;
+  font-size:.85rem;font-weight:800;color:var(--hot);
+  letter-spacing:.08em;margin-bottom:1.5rem;
+  box-shadow:var(--sh);
+  animation:slideUp .6s ease both;
+}
+.hero-crown{font-size:1.3rem;animation:bounce 2s ease-in-out infinite alternate;}
+@keyframes bounce{0%{transform:translateY(0) rotate(-5deg);}100%{transform:translateY(-8px) rotate(5deg);}}
+
+.hero-main-title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(3rem,9vw,6rem);
+  color:var(--dp);line-height:1.05;
+  text-shadow:3px 4px 0 rgba(181,54,90,.1);
+  animation:slideUp .8s .1s ease both;
+}
+.hero-sub-title{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.1rem,3vw,1.5rem);
+  color:var(--tm);
+  margin:.8rem 0 0;line-height:1.75;
+  animation:slideUp .8s .2s ease both;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+.trophy-wrap{position:relative;margin:2rem auto;animation:slideUp .8s .35s ease both;width:fit-content;}
+.trophy-svg{filter:drop-shadow(0 10px 22px rgba(212,165,53,.42));}
+.tshine{position:absolute;top:10%;left:18%;width:14%;height:26%;background:linear-gradient(135deg,rgba(255,255,255,.8),transparent);border-radius:50%;animation:tsh 3s ease-in-out infinite alternate;}
+@keyframes tsh{0%{opacity:.4;}100%{opacity:.9;}}
+
+.flower-row{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0;animation:slideUp .8s .45s ease both;}
+.fl{font-size:2rem;animation:sway 3.2s ease-in-out infinite alternate;}
+.fl:nth-child(2){animation-delay:.3s;}.fl:nth-child(3){animation-delay:.6s;}.fl:nth-child(4){animation-delay:.9s;}.fl:nth-child(5){animation-delay:1.2s;}
+@keyframes sway{0%{transform:rotate(-7deg) scale(.95);}100%{transform:rotate(7deg) scale(1.06);}}
+
+.celebrate-btn{
+  margin-top:1.5rem;padding:.9rem 2.5rem;
+  background:linear-gradient(135deg,var(--hot),var(--dp));
+  color:#fff;font-family:'Nunito',sans-serif;
+  font-weight:900;font-size:1rem;letter-spacing:.03em;
+  border-radius:50px;border:none;
+  box-shadow:0 6px 20px rgba(224,80,128,.35);
+  cursor:pointer;animation:slideUp .8s .55s ease both;transition:all .2s;
+}
+.celebrate-btn:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(224,80,128,.42);}
+
+/* ─── SURPRISE POPUP ─── */
+.surprise-bubble{
+  position:fixed;z-index:800;
+  background:white;border:2.5px solid var(--soft);
+  border-radius:20px;padding:1.2rem 1.5rem;
+  box-shadow:var(--sh2);
+  max-width:220px;text-align:center;
+  animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;
+  cursor:pointer;
+}
+@keyframes popIn{from{opacity:0;transform:scale(.5);}to{opacity:1;transform:scale(1);}}
+.surprise-bubble .sb-icon{font-size:2rem;margin-bottom:.3rem;}
+.surprise-bubble .sb-msg{font-size:.82rem;font-weight:700;color:var(--tm);line-height:1.5;}
+.surprise-bubble .sb-close{font-size:.7rem;color:var(--tl);margin-top:.4rem;display:block;}
+
+/* ─── PHOTOS ─── */
+#photos{background:var(--cream);}
+.photo-wall{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));
+  gap:1.4rem;max-width:960px;margin:0 auto;
+}
+.photo-frame{
+  background:#fff;border:3px solid var(--soft);
+  border-radius:8px;padding:10px 10px 42px;
+  box-shadow:var(--sh);
+  transform:rotate(var(--r,-1.5deg));transition:all .3s;
+  position:relative;
+}
+.photo-frame:nth-child(even){--r:1.7deg;}
+.photo-frame:nth-child(3n){--r:-2.4deg;}
+.photo-frame:hover{transform:rotate(0) scale(1.05) translateY(-5px);z-index:10;box-shadow:var(--sh2);}
+.photo-pin{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:16px;height:16px;background:var(--hot);border-radius:50%;box-shadow:0 2px 5px rgba(0,0,0,.2);}
+.photo-inner{width:100%;aspect-ratio:1;overflow:hidden;border-radius:5px;display:flex;align-items:center;justify-content:center;background:var(--blush);}
+.photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:5px;}
+.photo-inner img.broken{display:none;}
+.photo-fallback{display:none;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;}
+.photo-fallback .pf-icon{font-size:2.5rem;}
+.photo-fallback .pf-name{font-size:.7rem;font-weight:700;color:var(--tl);font-family:'Nunito',sans-serif;}
+.photo-inner img.broken + .photo-fallback{display:flex;}
+.caption-input{
+  font-family:'Dancing Script',cursive;font-size:.95rem;color:var(--tm);
+  text-align:center;border:none;border-bottom:1.5px dashed var(--soft);
+  background:transparent;outline:none;width:100%;margin-top:8px;
+  transition:border-color .2s;
+}
+.caption-input:focus{border-color:var(--mid);}
+.upload-slot{
+  position:relative;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:170px;border:2.5px dashed var(--mid);border-radius:8px;
+  background:rgba(255,255,255,.5);padding:1rem;transition:all .3s;
+  color:var(--mid);font-size:.85rem;font-weight:800;text-align:center;gap:.4rem;
+}
+.upload-slot:hover{background:#fff;border-color:var(--hot);}
+.upload-slot input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+
+/* ─── NOTES ─── */
+#notes{background:var(--pale);}
+.notes-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:1.5rem;max-width:960px;margin:0 auto;
+}
+.sticky{
+  background:#fff8fb;border-left:5px solid var(--mid);
+  padding:1.6rem 1.3rem 1.4rem;border-radius:0 16px 16px 0;
+  box-shadow:var(--sh);transform:rotate(var(--sr,-1deg));
+  transition:all .3s;position:relative;
+}
+.sticky:nth-child(2){--sr:1.2deg;background:#fff5f9;}
+.sticky:nth-child(3){--sr:-1.8deg;background:#fef2f6;}
+.sticky:nth-child(4){--sr:.8deg;background:#fff8fb;}
+.sticky:hover{transform:rotate(0) scale(1.02);box-shadow:var(--sh2);z-index:5;}
+.sticky-icon{font-size:1.5rem;position:absolute;top:1rem;right:1rem;}
+.sticky-title{font-family:'Dancing Script',cursive;font-size:1.35rem;color:var(--dp);margin-bottom:.55rem;}
+.sticky p{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;line-height:1.8;color:var(--tm);}
+.add-note-box{
+  border:2.5px dashed var(--mid);border-radius:16px;
+  padding:1.5rem 1.3rem;background:rgba(255,255,255,.5);
+  display:flex;flex-direction:column;gap:.6rem;
+}
+.add-note-box label{font-size:.8rem;color:var(--tl);font-weight:800;letter-spacing:.05em;}
+.add-note-box input,.add-note-box textarea{
+  width:100%;border:2px solid var(--soft);border-radius:10px;
+  padding:.55rem .8rem;font-family:'Nunito',sans-serif;
+  font-size:.9rem;color:var(--td);background:#fff;outline:none;resize:none;
+}
+.add-note-box input:focus,.add-note-box textarea:focus{border-color:var(--mid);}
+.add-note-box textarea{height:76px;}
+.mini-btn{
+  padding:.55rem 1.2rem;background:var(--dp);color:#fff;
+  border:none;border-radius:30px;font-family:'Nunito',sans-serif;
+  font-weight:900;font-size:.88rem;cursor:pointer;transition:all .2s;align-self:flex-start;
+}
+.mini-btn:hover{background:var(--hot);transform:translateY(-2px);}
+
+/* ─── GAME ─── */
+#game{background:var(--cream);text-align:center;}
+#game-area{
+  position:relative;max-width:480px;margin:0 auto;height:360px;
+  background:linear-gradient(180deg,#b3d9f5 0%,#d9eefa 57%,#aad4a8 57%,#82c47f 100%);
+  border-radius:20px;border:3px solid var(--soft);
+  overflow:hidden;cursor:crosshair;user-select:none;
+  box-shadow:var(--sh2);
+}
+#game-area::after{content:'';position:absolute;left:0;right:0;top:57%;height:3px;background:rgba(255,255,255,.9);pointer-events:none;}
+.game-ball{
+  position:absolute;width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+  cursor:pointer;filter:drop-shadow(0 4px 6px rgba(0,0,0,.2));
+  animation:ballbob 2s ease-in-out infinite alternate;z-index:10;
+}
+@keyframes ballbob{0%{transform:translateY(0) rotate(-4deg);}100%{transform:translateY(-8px) rotate(4deg);}}
+.game-ball:active{transform:scale(.78)!important;}
+.spike-fx{position:absolute;font-size:1.6rem;pointer-events:none;animation:sfx .55s forwards;z-index:20;}
+@keyframes sfx{0%{opacity:1;transform:translate(-50%,-50%) scale(.6);}55%{opacity:1;transform:translate(-50%,-95%) scale(1.3);}100%{opacity:0;transform:translate(-50%,-155%) scale(.8);}}
+#score-display{font-family:'Dancing Script',cursive;font-size:2.6rem;color:var(--dp);margin:1.4rem 0 .3rem;}
+#score-msg{font-family:'Playfair Display',serif;font-style:italic;color:var(--tl);font-size:1rem;min-height:1.5em;margin-bottom:1rem;}
+.game-btn{padding:.6rem 2rem;background:var(--dp);color:#fff;border:none;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;cursor:pointer;transition:all .2s;margin-top:.8rem;}
+.game-btn:hover{background:var(--hot);transform:translateY(-2px);}
+
+/* ─── CUSTOMIZE ─── */
+#customize{background:linear-gradient(135deg,#ffe8ef,#fff0f3);}
+.cust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.2rem;max-width:900px;margin:0 auto;}
+.cust-card{background:#fff;border:2px solid var(--soft);border-radius:20px;padding:1.5rem 1.2rem;text-align:center;transition:all .25s;box-shadow:var(--sh);}
+.cust-card:hover{box-shadow:var(--sh2);transform:translateY(-3px);}
+.cust-title{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--dp);margin-bottom:.7rem;}
+.cust-card p{font-size:.82rem;font-weight:600;color:var(--tl);margin-bottom:.8rem;}
+.swatches{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;}
+.sw{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:all .2s;}
+.sw:hover,.sw.on{border-color:#fff;box-shadow:0 0 0 3px var(--mid);transform:scale(1.15);}
+.stk-grid{display:flex;flex-wrap:wrap;gap:.38rem;justify-content:center;}
+.stk{font-size:1.5rem;cursor:pointer;padding:.2rem .3rem;border-radius:8px;transition:all .15s;border:1.5px solid transparent;}
+.stk:hover{background:var(--blush);border-color:var(--soft);transform:scale(1.18);}
+.font-list{display:flex;flex-direction:column;gap:.5rem;}
+.fbtn{padding:.45rem .8rem;border:2px solid var(--soft);border-radius:10px;background:transparent;cursor:pointer;font-size:.85rem;color:var(--tm);transition:all .2s;text-align:left;font-weight:700;}
+.fbtn:hover{background:var(--blush);border-color:var(--mid);}
+.fbtn.on{background:var(--blush);border-color:var(--dp);color:var(--dp);}
+.float-stk{position:fixed;font-size:2rem;pointer-events:none;z-index:50;animation:floatup 4.5s ease-out forwards;}
+@keyframes floatup{0%{opacity:1;transform:translateY(0) rotate(0);}100%{opacity:0;transform:translateY(-150px) rotate(40deg);}}
+
+/* ─── SECRET ─── */
+#secret{background:var(--cream);text-align:center;}
+.bloom{font-size:4rem;cursor:pointer;display:inline-block;animation:pulse 2.5s ease-in-out infinite;transition:transform .3s;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+.bloom:hover{transform:scale(1.25) rotate(18deg);}
+#secret-msg{
+  max-width:580px;margin:2rem auto 0;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.02rem;line-height:1.9;color:var(--td);
+  background:#fff;border:2px solid var(--soft);
+  border-radius:20px;padding:2.2rem 2rem;
+  display:none;animation:reveal .5s ease;text-align:left;
+  box-shadow:var(--sh);
+}
+@keyframes reveal{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+#secret-msg em{color:var(--dp);font-style:normal;font-weight:700;}
+#secret-msg .sig{font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--dp);margin-top:1.3rem;}
+#secret-hint{font-size:.82rem;color:var(--tl);margin-top:.6rem;font-style:italic;}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dp);color:rgba(255,255,255,.88);text-align:center;padding:2.2rem 2rem;font-family:'Dancing Script',cursive;font-size:1.4rem;position:relative;z-index:1;}
+footer small{display:block;font-family:'Nunito',sans-serif;font-size:.78rem;margin-top:.4rem;opacity:.55;letter-spacing:.06em;}
+
+/* ─── EASTER EGG cat cursor trail ─── */
+.cursor-trail{position:fixed;pointer-events:none;z-index:9999;font-size:1rem;animation:trailFade .8s ease forwards;}
+@keyframes trailFade{0%{opacity:.9;transform:scale(1);}100%{opacity:0;transform:scale(.3) translateY(-20px);}}
+
+@media(max-width:600px){
+  .photo-wall{grid-template-columns:repeat(2,1fr);}
+  .notes-grid{grid-template-columns:1fr;}
+  .cust-grid{grid-template-columns:1fr 1fr;}
+  #banner{height:clamp(200px,60vw,320px);}
+}
+</style>
+</head>
+<body>
+
+<div class="petal-canvas" id="petal-canvas"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero">🐱 Home</a>
+  <a href="#photos">🌸 Photos</a>
+  <a href="#notes">🐾 Notes</a>
+  <a href="#game">🏐 Game</a>
+  <a href="#customize">🎀 Customize</a>
+  <a href="#secret">🌷 Secret</a>
+</nav>
+
+<!-- ─── BANNER ─── -->
+<div id="banner">
+  <div class="banner-fallback" id="banner-fallback">
+    🌸 🐱 🌷 🐰 🌺 🐾 🌼
+  </div>
+  <img class="banner-img" src="flowerbanner.jpg" alt="banner"
+    onload="document.getElementById('banner-fallback').style.display='none'"
+    onerror="this.style.display='none'">
+  <div class="banner-overlay"></div>
+  <div class="banner-text">
+    <div class="banner-sup">✨ a page made just for you ✨</div>
+    <div class="banner-name">Cathy Claire</div>
+    <div class="banner-tagline">champion on the court, sunshine off it 🏐</div>
+    <div class="banner-cats">🐱 🌸 🐰 🌷 🐾</div>
+  </div>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-badge">
+    <span class="hero-crown">🏆</span>
+    <span>VOLLEYBALL CHAMPION</span>
+    <span class="hero-crown">🏆</span>
+  </div>
+  <h1 class="hero-main-title">Congratulations,<br>Cathy Claire!</h1>
+  <p class="hero-sub-title">
+    You played last Friday and I heard you did so well.<br>
+    I'm sorry I wasn't there — but I'm genuinely proud of you.
+  </p>
+
+  <!-- Trophy -->
+  <div class="trophy-wrap">
+    <svg class="trophy-svg" width="190" height="230" viewBox="0 0 200 235">
+      <defs>
+        <radialGradient id="tg" cx="38%" cy="28%">
+          <stop offset="0%" stop-color="#fffde7"/>
+          <stop offset="52%" stop-color="#ffd54f"/>
+          <stop offset="100%" stop-color="#f57f17"/>
+        </radialGradient>
+      </defs>
+      <path d="M56,16 Q56,0 100,0 Q144,0 144,16 L134,116 Q132,136 100,136 Q68,136 66,116 Z" fill="url(#tg)" stroke="#e65100" stroke-width="1.3"/>
+      <path d="M56,36 Q16,36 16,76 Q16,116 56,112" fill="none" stroke="#f9a825" stroke-width="10" stroke-linecap="round"/>
+      <path d="M144,36 Q184,36 184,76 Q184,116 144,112" fill="none" stroke="#f9a825" stroke-width="10" stroke-linecap="round"/>
+      <text x="100" y="63" font-size="24" text-anchor="middle">🐱</text>
+      <text x="100" y="105" font-size="24" text-anchor="middle">🏐</text>
+      <text x="70" y="44" font-size="13" text-anchor="middle">⭐</text>
+      <text x="130" y="44" font-size="13" text-anchor="middle">⭐</text>
+      <rect x="87" y="136" width="26" height="36" rx="5" fill="#ffd54f" stroke="#e65100" stroke-width="1"/>
+      <rect x="55" y="170" width="90" height="17" rx="8" fill="#ffd54f" stroke="#e65100" stroke-width="1.2"/>
+      <rect x="44" y="184" width="112" height="13" rx="6" fill="#f9a825" stroke="#e65100" stroke-width="1.2"/>
+      <text x="100" y="194" font-size="9" font-weight="bold" fill="#bf360c" text-anchor="middle" font-family="Nunito,sans-serif" letter-spacing="2.5">CHAMP</text>
+    </svg>
+    <div class="tshine"></div>
+  </div>
+
+  <div class="flower-row">
+    <span class="fl">🌸</span>
+    <span class="fl">🐰</span>
+    <span class="fl">🌷</span>
+    <span class="fl">🐱</span>
+    <span class="fl">🌺</span>
+  </div>
+  <button class="celebrate-btn" onclick="launchConfetti()">🎉 Celebrate with Cathy!</button>
+</section>
+
+<div class="critter-strip">
+  <span>🌸</span><span>🐱</span><span>🐰</span><span>🌷</span><span>🐾</span><span>🌺</span><span>🌸</span><span>🐱</span><span>🐰</span><span>🌷</span><span>🐾</span><span>🌺</span><span>🌸</span><span>🐱</span><span>🐰</span>
+</div>
+
+<!-- ─── PHOTOS ─── -->
+<section id="photos" class="sec-pad">
+  <div class="reveal wrap">
+    <h2 class="s-title">Memory Wall 📸</h2>
+    <p class="s-sub">Place <strong>flower1.jpg</strong> through <strong>flower5.jpg</strong> in the same folder as this file — they'll appear here automatically 🌸</p>
+    <div class="divider"><span>🐾</span></div>
+    <div class="photo-wall" id="photo-wall">
+
+      <div class="photo-frame">
+        <div class="photo-pin"></div>
+        <div class="photo-inner">
+          <img src="flower1.jpg" alt="flower1" onerror="this.classList.add('broken')">
+          <div class="photo-fallback"><span class="pf-icon">🌸</span><span class="pf-name">flower1.jpg</span></div>
+        </div>
+        <input class="caption-input" value="flower1.jpg" placeholder="caption…">
+      </div>
+
+      <div class="photo-frame">
+        <div class="photo-pin"></div>
+        <div class="photo-inner">
+          <img src="flower2.jpg" alt="flower2" onerror="this.classList.add('broken')">
+          <div class="photo-fallback"><span class="pf-icon">🌷</span><span class="pf-name">flower2.jpg</span></div>
+        </div>
+        <input class="caption-input" value="flower2.jpg" placeholder="caption…">
+      </div>
+
+      <div class="photo-frame">
+        <div class="photo-pin"></div>
+        <div class="photo-inner">
+          <img src="flower3.jpg" alt="flower3" onerror="this.classList.add('broken')">
+          <div class="photo-fallback"><span class="pf-icon">🌺</span><span class="pf-name">flower3.jpg</span></div>
+        </div>
+        <input class="caption-input" value="flower3.jpg" placeholder="caption…">
+      </div>
+
+      <div class="photo-frame">
+        <div class="photo-pin"></div>
+        <div class="photo-inner">
+          <img src="flower4.jpg" alt="flower4" onerror="this.classList.add('broken')">
+          <div class="photo-fallback"><span class="pf-icon">🌼</span><span class="pf-name">flower4.jpg</span></div>
+        </div>
+        <input class="caption-input" value="flower4.jpg" placeholder="caption…">
+      </div>
+
+      <div class="photo-frame">
+        <div class="photo-pin"></div>
+        <div class="photo-inner">
+          <img src="flower5.jpg" alt="flower5" onerror="this.classList.add('broken')">
+          <div class="photo-fallback"><span class="pf-icon">💐</span><span class="pf-name">flower5.jpg</span></div>
+        </div>
+        <input class="caption-input" value="flower5.jpg" placeholder="caption…">
+      </div>
+
+      <label class="upload-slot">
+        <input type="file" accept="image/*" multiple onchange="addPhotos(event)">
+        <span style="font-size:2.2rem">📷</span>
+        <span>Add more photos</span>
+        <span style="font-size:.74rem;opacity:.65;font-weight:700">tap to upload</span>
+      </label>
+
+    </div>
+  </div>
+</section>
+
+<div class="critter-strip" style="background:#ffeef3;">
+  <span>🐰</span><span>🌸</span><span>🐱</span><span>🌷</span><span>🐾</span><span>🌺</span><span>🐰</span><span>🌸</span><span>🐱</span><span>🌷</span><span>🐾</span><span>🌺</span><span>🐰</span><span>🌸</span><span>🐱</span>
+</div>
+
+<!-- ─── NOTES ─── -->
+<section id="notes" class="sec-pad">
+  <div class="reveal wrap">
+    <h2 class="s-title">For you 💌</h2>
+    <p class="s-sub">A few things I wanted to say</p>
+    <div class="divider"><span>🌷</span></div>
+    <div class="notes-grid" id="notes-grid">
+
+      <div class="sticky">
+        <div class="sticky-icon">🏐</div>
+        <div class="sticky-title">I heard you won</div>
+        <p>I wasn't there last Friday and I felt bad about missing it. But I heard you played really well, and I just wanted you to know — I'm proud of you. You worked for that win.</p>
+      </div>
+
+      <div class="sticky">
+        <div class="sticky-icon">🎧</div>
+        <div class="sticky-title">Thank you, seriously</div>
+        <p>The headphones on my birthday, the snacks since then — you didn't have to do any of that. I always feel a little shy receiving because you give so naturally. This page is me trying to give something back.</p>
+      </div>
+
+      <div class="sticky">
+        <div class="sticky-icon">🐾</div>
+        <div class="sticky-title">You probably don't realize</div>
+        <p>Every time I come to you when I'm having a hard time, you just listen. You don't make it a big thing. That means more than you probably think, and I'm grateful for it.</p>
+      </div>
+
+      <div class="sticky">
+        <div class="sticky-icon">🌸</div>
+        <div class="sticky-title">Worth celebrating</div>
+        <p>Maybe it felt like any other Friday to you. But you won, and that's worth something. I made this because I wanted to mark it — you deserve to be celebrated, even a little.</p>
+      </div>
+
+      <div class="add-note-box">
+        <label>✏️ Add a note</label>
+        <input id="note-title" placeholder="Title (optional)">
+        <textarea id="note-body" placeholder="Write something here…"></textarea>
+        <button class="mini-btn" onclick="addNote()">Post 💌</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="critter-strip" style="background:#ffeef3;">
+  <span>🌺</span><span>🐾</span><span>🌷</span><span>🐱</span><span>🌸</span><span>🐰</span><span>🌺</span><span>🐾</span><span>🌷</span><span>🐱</span><span>🌸</span><span>🐰</span><span>🌺</span><span>🐾</span><span>🌷</span>
+</div>
+
+<!-- ─── GAME ─── -->
+<section id="game" class="sec-pad">
+  <div class="reveal wrap">
+    <h2 class="s-title">Spike It! 🏐</h2>
+    <p class="s-sub">Tap the ball as fast as you can — unlock surprises! 🐱</p>
+    <div class="divider"><span>🏐</span></div>
+    <div id="score-display">Score: <span id="score">0</span></div>
+    <div id="score-msg">Tap the volleyball to start! 🐱</div>
+    <div id="game-area">
+      <div class="game-ball" id="ball" onclick="spike(event)" style="left:50%;top:27%;transform:translate(-50%,-50%)">🏐</div>
+    </div>
+    <button class="game-btn" onclick="resetGame()">↺ Reset</button>
+    <p id="game-note" style="font-size:.78rem;color:var(--tl);margin-top:.9rem;font-style:italic;">The real champion plays better than this game ever could 🌸</p>
+  </div>
+</section>
+
+<!-- ─── CUSTOMIZE ─── -->
+<section id="customize" class="sec-pad">
+  <div class="reveal wrap">
+    <h2 class="s-title">Make it yours ✨</h2>
+    <p class="s-sub">This page is for you, Cathy Claire — decorate it however you like!</p>
+    <div class="divider"><span>🐱</span></div>
+    <div class="cust-grid">
+
+      <div class="cust-card">
+        <div class="cust-title">🎨 Page Color</div>
+        <p>Pick your vibe</p>
+        <div class="swatches">
+          <div class="sw on"  style="background:#fcd9e2;" onclick="setTheme('#fff7f8','#b5365a','#e05080','#fadadd',this)" title="Pink"></div>
+          <div class="sw" style="background:#e4d9f5;" onclick="setTheme('#f5f0ff','#6035c2','#9060e0','#e4d9f5',this)" title="Lavender"></div>
+          <div class="sw" style="background:#d5eee8;" onclick="setTheme('#f0faf7','#1a7a62','#3aad8a','#c5e8de',this)" title="Mint"></div>
+          <div class="sw" style="background:#fce8d0;" onclick="setTheme('#fffaf5','#bf6a00','#e08830','#fce8d0',this)" title="Peach"></div>
+          <div class="sw" style="background:#ffd9e6;" onclick="setTheme('#fff5f9','#8f0a40','#d0306a','#ffd9e6',this)" title="Rose"></div>
+        </div>
+      </div>
+
+      <div class="cust-card">
+        <div class="cust-title">🐾 Drop a Sticker</div>
+        <p>Tap one to float it!</p>
+        <div class="stk-grid">
+          <span class="stk" onclick="dropSticker('🐱')">🐱</span>
+          <span class="stk" onclick="dropSticker('🐰')">🐰</span>
+          <span class="stk" onclick="dropSticker('🐾')">🐾</span>
+          <span class="stk" onclick="dropSticker('🌸')">🌸</span>
+          <span class="stk" onclick="dropSticker('🏐')">🏐</span>
+          <span class="stk" onclick="dropSticker('⭐')">⭐</span>
+          <span class="stk" onclick="dropSticker('🌷')">🌷</span>
+          <span class="stk" onclick="dropSticker('🎀')">🎀</span>
+          <span class="stk" onclick="dropSticker('💕')">💕</span>
+          <span class="stk" onclick="dropSticker('🐈')">🐈</span>
+          <span class="stk" onclick="dropSticker('✨')">✨</span>
+          <span class="stk" onclick="dropSticker('🌺')">🌺</span>
+        </div>
+      </div>
+
+      <div class="cust-card">
+        <div class="cust-title">🖋 Text Font</div>
+        <p>Change the page font</p>
+        <div class="font-list">
+          <button class="fbtn on" onclick="setFont('Nunito',this)">Nunito (default)</button>
+          <button class="fbtn" style="font-family:'Playfair Display',serif" onclick="setFont('Playfair Display',this)">Playfair Display</button>
+          <button class="fbtn" style="font-family:'Dancing Script',cursive" onclick="setFont('Dancing Script',this)">Dancing Script</button>
+          <button class="fbtn" style="font-family:Georgia,serif" onclick="setFont('Georgia',this)">Georgia Classic</button>
+        </div>
+      </div>
+
+      <div class="cust-card">
+        <div class="cust-title">🎉 Party Mode</div>
+        <p>You deserve it!</p>
+        <button class="celebrate-btn" style="margin-top:0;font-size:.9rem;padding:.75rem 1.6rem;" onclick="launchConfetti()">🎊 Confetti!</button>
+        <br><br>
+        <button class="celebrate-btn" style="margin-top:0;font-size:.9rem;padding:.75rem 1.6rem;background:linear-gradient(135deg,#f9a825,#e65100);" onclick="launchFlowers()">🌸 Rain Flowers!</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECRET ─── -->
+<section id="secret" class="sec-pad">
+  <div class="reveal wrap" style="text-align:center;">
+    <h2 class="s-title">One more thing 🌸</h2>
+    <p class="s-sub">Tap the flower to read a hidden message just for you</p>
+    <div class="divider"><span>🌷</span></div>
+    <span class="bloom" onclick="revealSecret()">🌸</span>
+    <p id="secret-hint">✨ go on, tap it</p>
+    <div id="secret-msg">
+      <p>Hey Cathy Claire,</p><br>
+      <p>I'm not always great at saying things out loud, so here it is in writing.</p><br>
+      <p>You're the kind of friend I can actually come to when something is wrong. You listen without making me feel like a burden, and you smile through everything in a way that genuinely helps. I don't take that for granted.</p><br>
+      <p>The headphones on my birthday, the snacks since then — <em>I notice.</em> I always feel a little shy about it because you give so naturally and I never feel like I match it. This page is my small attempt.</p><br>
+      <p>I'm sorry I missed your game last Friday. I really am. But I hope this little page lets you know — <em>I'm proud of you, I see you, and I'm really glad you're my friend.</em></p><br>
+      <p>You won the game. But I think the people who have you in their corner are the real lucky ones. 🐾</p><br>
+      <div class="sig">— always rooting for you, Cathy 🌸</div>
+    </div>
+  </div>
+</section>
+
+<div class="critter-strip" style="background:var(--dp);">
+  <span style="opacity:.5">🐱</span><span style="opacity:.5">🌸</span><span style="opacity:.5">🐰</span><span style="opacity:.5">🌷</span><span style="opacity:.5">🐾</span><span style="opacity:.5">🌺</span><span style="opacity:.5">🐱</span><span style="opacity:.5">🌸</span><span style="opacity:.5">🐰</span><span style="opacity:.5">🌷</span><span style="opacity:.5">🐾</span><span style="opacity:.5">🌺</span><span style="opacity:.5">🐱</span><span style="opacity:.5">🌸</span><span style="opacity:.5">🐰</span>
+</div>
+
+<footer>
+  made with care, for Cathy Claire 🐾
+  <small>🌸 congrats on the win, champion 🏐</small>
+</footer>
+
+<script>
+// ── PETALS ──
+(function(){
+  const c=document.getElementById('petal-canvas');
+  const cols=['#f48fb1','#f8bbd0','#fce4ec','#f06292','#e91e8c','#fadadd','#ffcdd2'];
+  for(let i=0;i<22;i++){
+    const p=document.createElement('div');p.className='petal';
+    const s=7+Math.random()*14;
+    p.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s}px;
+      background:${cols[~~(Math.random()*cols.length)]};
+      animation-duration:${7+Math.random()*9}s;
+      animation-delay:${-Math.random()*12}s;
+      opacity:${.28+Math.random()*.45};
+      border-radius:${Math.random()>.5?'50% 0 50% 0':'50%'};`;
+    c.appendChild(p);
+  }
+})();
+
+// ── CONFETTI ──
+function launchConfetti(){
+  const cols=['#f06292','#e91e8c','#b5365a','#f8bbd0','#ffd54f','#fff9c4','#fff','#f48fb1','#ffcdd2'];
+  for(let i=0;i<90;i++) setTimeout(()=>{
+    const el=document.createElement('div');el.className='cf';
+    const w=5+Math.random()*9;
+    el.style.cssText=`left:${Math.random()*100}vw;width:${w}px;height:${w}px;
+      background:${cols[~~(Math.random()*cols.length)]};
+      border-radius:${Math.random()>.5?'50%':'2px'};
+      transform:rotate(${Math.random()*360}deg);
+      animation-delay:${Math.random()*.45}s;
+      animation-duration:${2+Math.random()*1.6}s;`;
+    document.body.appendChild(el);setTimeout(()=>el.remove(),4400);
+  },i*25);
+}
+setTimeout(launchConfetti,700);
+
+// ── FLOWER RAIN ──
+function launchFlowers(){
+  const items=['🌸','🌷','🌺','🌼','💐','🌹','🐾','🐱','🐰','✨'];
+  for(let i=0;i<36;i++) setTimeout(()=>{
+    const el=document.createElement('div');el.className='cf';
+    el.style.cssText=`left:${Math.random()*100}vw;font-size:${.95+Math.random()*.9}rem;
+      background:transparent;
+      animation-delay:${Math.random()*.4}s;animation-duration:${2.5+Math.random()*2}s;`;
+    el.textContent=items[~~(Math.random()*items.length)];
+    document.body.appendChild(el);setTimeout(()=>el.remove(),5500);
+  },i*52);
+}
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)e.target.classList.add('revealed');
+}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── GAME ──
+let score=0;
+const msgs=['Nice one! 🔥','Go Cathy! 🌸','SPIKE! 🏐','Too fast! 🐱','Keep going! ✨','She wins again! 🏆','Paw-some! 🐾','Unstoppable! 💪','Meow!! 🐈','Hop hop! 🐰'];
+const milestones={
+  5:  {icon:'🐱',msg:'5 spikes! A cat appears to cheer you on!'},
+  10: {icon:'🐰',msg:'10 spikes! A bunny hops in to celebrate!'},
+  20: {icon:'🌸',msg:'20 spikes! Flowers bloom for Cathy Claire!'},
+  30: {icon:'🏆',msg:'30 spikes! You\'re as unstoppable as the champ herself!'},
+  50: {icon:'🎊',msg:'50 SPIKES!! You\'re officially a legend! 🌸'}
+};
+function spike(e){
+  score++;
+  document.getElementById('score').textContent=score;
+  document.getElementById('score-msg').textContent=msgs[~~(Math.random()*msgs.length)];
+  if(milestones[score]) showSurprise(milestones[score].icon, milestones[score].msg);
+  const area=document.getElementById('game-area');
+  const rect=area.getBoundingClientRect();
+  const fx=document.createElement('div');fx.className='spike-fx';
+  fx.textContent=['✨','💕','⭐','🌸','🐾','💥','🐱','🐰'][~~(Math.random()*8)];
+  fx.style.left=(e.clientX-rect.left)+'px';fx.style.top=(e.clientY-rect.top)+'px';
+  area.appendChild(fx);setTimeout(()=>fx.remove(),620);
+  const ball=document.getElementById('ball');
+  const mx=area.offsetWidth-54,my=area.offsetHeight-54;
+  ball.style.transition='left .38s cubic-bezier(.34,1.56,.64,1),top .38s cubic-bezier(.34,1.56,.64,1)';
+  ball.style.left=(18+Math.random()*mx)+'px';
+  ball.style.top=(14+Math.random()*my)+'px';
+  ball.style.transform='none';
+}
+function resetGame(){
+  score=0;
+  document.getElementById('score').textContent=0;
+  document.getElementById('score-msg').textContent='Tap the volleyball to start! 🐱';
+  const b=document.getElementById('ball');
+  b.style.left='50%';b.style.top='27%';b.style.transform='translate(-50%,-50%)';
+}
+
+// ── SURPRISE POPUPS ──
+function showSurprise(icon, msg){
+  const bubble=document.createElement('div');
+  bubble.className='surprise-bubble';
+  const x=15+Math.random()*55;
+  const y=15+Math.random()*50;
+  bubble.style.cssText=`left:${x}vw;top:${y}vh;`;
+  bubble.innerHTML=`<div class="sb-icon">${icon}</div><div class="sb-msg">${msg}</div><span class="sb-close">tap to close 🌸</span>`;
+  bubble.onclick=()=>bubble.remove();
+  document.body.appendChild(bubble);
+  setTimeout(()=>bubble.remove(),5000);
+  launchConfetti();
+}
+
+// ── RANDOM SURPRISE ─ pop up occasionally ──
+const surprises=[
+  {icon:'🐱',msg:'psst! Cathy is the best 🌸'},
+  {icon:'🐰',msg:'a wild bunny appeared just for you!'},
+  {icon:'🌸',msg:'a flower blooms every time Cathy smiles'},
+  {icon:'🐾',msg:'paw prints lead to the best friend ever'},
+  {icon:'🌷',msg:'you deserve all the flowers, Cathy Claire!'},
+];
+let surpriseIdx=0;
+function randomSurprise(){
+  const s=surprises[surpriseIdx % surprises.length];
+  showSurprise(s.icon,s.msg);
+  surpriseIdx++;
+}
+// trigger random surprise every ~25 seconds
+setInterval(randomSurprise, 25000);
+// first one after 8s
+setTimeout(randomSurprise, 8000);
+
+// ── SECRET ──
+let revealed=false;
+function revealSecret(){
+  if(revealed)return;
+  document.getElementById('secret-msg').style.display='block';
+  document.getElementById('secret-hint').textContent='💖 just for you, Cathy Claire.';
+  revealed=true;launchConfetti();
+  // bonus: rain cats and bunnies
+  launchFlowers();
+}
+
+// ── ADD NOTE ──
+function addNote(){
+  const t=document.getElementById('note-title').value.trim();
+  const b=document.getElementById('note-body').value.trim();
+  if(!b){alert('Write something first! 🐱');return;}
+  const grid=document.getElementById('notes-grid');
+  const addBox=grid.lastElementChild;
+  const note=document.createElement('div');note.className='sticky';
+  note.innerHTML=`<div class="sticky-icon">💌</div><div class="sticky-title">${t||'A note'}</div><p>${b}</p>`;
+  grid.insertBefore(note,addBox);
+  document.getElementById('note-title').value='';
+  document.getElementById('note-body').value='';
+}
+
+// ── ADD PHOTOS ──
+function addPhotos(event){
+  const wall=document.getElementById('photo-wall');
+  const btn=wall.lastElementChild;
+  Array.from(event.target.files).forEach(f=>{
+    const url=URL.createObjectURL(f);
+    const frame=document.createElement('div');frame.className='photo-frame';
+    frame.innerHTML=`<div class="photo-pin"></div>
+      <div class="photo-inner"><img src="${url}" alt="photo"></div>
+      <input class="caption-input" value="${f.name.replace(/\.[^.]+$/,'').replace(/_/g,' ')}" placeholder="caption…">`;
+    wall.insertBefore(frame,btn);
+  });
+}
+
+// ── CUSTOMIZE ──
+function setTheme(bg,dp,hot,soft,el){
+  const r=document.documentElement;
+  r.style.setProperty('--pale',bg);
+  r.style.setProperty('--dp',dp);
+  r.style.setProperty('--hot',hot);
+  r.style.setProperty('--mid',hot);
+  r.style.setProperty('--soft',soft);
+  r.style.setProperty('--tm',dp);
+  document.querySelectorAll('.sw').forEach(s=>s.classList.remove('on'));
+  el.classList.add('on');
+}
+function setFont(f,el){
+  document.body.style.fontFamily=`'${f}',sans-serif`;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+}
+function dropSticker(emoji){
+  const el=document.createElement('div');el.className='float-stk';
+  el.textContent=emoji;
+  el.style.cssText=`left:${15+Math.random()*65}vw;bottom:${8+Math.random()*28}vh;`;
+  document.body.appendChild(el);setTimeout(()=>el.remove(),5000);
+}
+
+// ── CURSOR CAT TRAIL ──
+const trailItems=['🐾','🌸','🐱','✨','🐰','🌷'];
+let trailT=0;
+document.addEventListener('mousemove',e=>{
+  const now=Date.now();
+  if(now-trailT<120)return;
+  trailT=now;
+  const tr=document.createElement('div');tr.className='cursor-trail';
+  tr.textContent=trailItems[~~(Math.random()*trailItems.length)];
+  tr.style.cssText=`left:${e.clientX-8}px;top:${e.clientY-8}px;`;
+  document.body.appendChild(tr);
+  setTimeout(()=>tr.remove(),900);
+});
+</script>
+</body>
+</html>
